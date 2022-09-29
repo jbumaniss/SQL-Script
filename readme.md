@@ -1,7 +1,7 @@
 #### Izveidots PHP skripts, kas savienojas ar datubāzi, izvelk visus produktus un saglabā tos XML failā products.xml. Fails saglabāts tajā pašā mapē, kur php skripts.
 ##### Produkti no example tabulām `product`. 
 ##### To apraksti `product_description` 
-##### Un atlaides `product_special`.
+##### Un to atlaides `product_special`.
 
 ---
 
@@ -27,4 +27,5 @@
 
 ---
 
+##### Repo atrodas uzģenerētais no sql sample datiem xml fails `products.xml` 
 ##### Skripts darbojas ar MySQL versiju 5.7.39 un PHP 7.4
