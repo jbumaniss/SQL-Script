@@ -3,7 +3,7 @@
 
 
 
-$mysqli = new mysqli('127.0.0.1', 'root', 'Redalert2', 'webdev');
+$mysqli = new mysqli('127.0.0.1', 'root', 'enter_password', 'webdev');
 if ($mysqli->connect_errno) {
     echo "Connection failed " . $mysqli->connect_error;
     exit();
