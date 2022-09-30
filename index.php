@@ -2,8 +2,13 @@
 
 
 
+$database_hostname = 'enter_your_database_hostname';
+$database_username = 'enter_your_database_username';
+$database_password = 'enter_password';
+$database_name = 'enter_your_database_name';
 
-$mysqli = new mysqli('127.0.0.1', 'root', 'enter_password', 'webdev');
+
+$mysqli = new mysqli($database_hostname, $database_username, $database_password, $database_name);
 if ($mysqli->connect_errno) {
     echo "Connection failed " . $mysqli->connect_error;
     exit();

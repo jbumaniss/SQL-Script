@@ -29,3 +29,24 @@
 
 ##### Repo atrodas uzģenerētais no sql sample datiem xml fails `products.xml` 
 ##### Skripts darbojas ar MySQL versiju 5.7.39 un PHP 7.4
+
+
+---
+
+#### Lai palaistu so skriptu ir nepiecieams MySQL 5.7.39 un PHP 7.4
+#### 1) Klonēt vai lejuplādēt šo git direktoriju
+#### 2) Nepiecieams izveidot MySQL datubāzi un importēt webdev_test.sql failu savā MySQL datubazē
+#### 3) Atvērt ar koda editoru, example: vscode
+#### 3) Aizpildīt index.php faila augšdaļā atrodošos laukus:
+##### a) `$database_hostname` = ievadiet savu MySQL hostname, ip addresi, example: localhost
+##### b) `$database_username` = ievadiet savu MySQL username, lietotaja vārdu example: root
+##### c) `$database_password` = ievadiet savu MySQL password, lietotāja paroli vai atstājat tukšu ja tādas nav
+##### d) `$database_name` = ievadiet savu MySQL database name, datubāzes vārdu, example: webdev
+#### 4) palaist script termināli no direktorijas kurā atrodas index.php ar komandu:
+
+````
+php index.php
+
+````
+
+#### Veiksmīgas izpildes gadījumā terminalī tiks izvadīts `XML file generated successfully`, kas atradīsies faila products.xml.
