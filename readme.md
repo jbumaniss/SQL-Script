@@ -1,52 +1,50 @@
-#### Izveidots PHP skripts, kas savienojas ar datubāzi, izvelk visus produktus un saglabā tos XML failā products.xml. Fails saglabāts tajā pašā mapē, kur php skripts.
-##### Produkti no example tabulām `product`. 
-##### To apraksti `product_description` 
-##### Un to atlaides `product_special`.
+# PHP Script for Database Connection and XML File Generation
 
 ---
 
-### XML failā izvadīti šādi dati:
-#### 1) :model: - produkta artikuls no `product.model` lauka.
-#### 2) :status: - statuss ieslēgts/izslēgts, ko apzīmē ar 1 vai 0. `product.status` lauks.
-#### 3) :name: - nosaukums katrā no 3 valodām. Atrodas `product_description` tabulā.
-#### 4) :namelv: - latviešu (lv) = 1
-#### 5) :nameeng: - angļu (eng) = 2
-#### 6) :nameru: - krievu (ru) = 3
-#### 7) :description: - apraksts katrā no 3 valodām. Atrodas `product_description` tabulā. Apraksts pirms izvades saīsināts lidz max 200 rakstzīmēm un beigās pielikti daudzpunkti (...). Vārdi netiek pārrauti to vidū.
-#### 4) :descriptionlv: latviešu (lv) = 1
-#### 5) :descriptioneng: angļu (eng) = 2
-#### 6) :descriptionru: krievu (ru) = 3
-#### 8) :quantity: - produkta atlikums no `product.quantity`.
-#### 9) :ean: - svītrkods no `product.ean`
-#### 10) :image_url: - attēla path no `product.image`, kuram priekšā pielikts bāzes URL 'https://www.webdev.lv/'.
-#### 8) :date_added: - pievienošanas datums no lauka `product.date_added` formātā d-m-Y.
-#### 9) :price: - cena no `product.price`.
-#### 10) :special_price: - cena no `product_special`, ja šodienas datums (NOW) ir mazāks vai vienāds ar `date_end`.
+A PHP script has been developed to connect to a database, retrieve all products, and save them in an XML file named `products.xml`. This file is stored in the same directory as the PHP script.
 
-#### Visas cenas no datubāzes izvadītas ar plus PVN 21%. noapaļotas līdz diviem cipariem aiz komata. Cipariem aiz komata ir arī tad, ja tie ir nulles.
+## Data Source:
+- **Products**: Sourced from the `product` table.
+- **Product Descriptions**: Found in the `product_description` table.
+- **Product Special Offers**: Listed in the `product_special` table.
 
----
+## XML File Data Structure:
+1) **Model**: Product model from the `product.model` field.
+2) **Status**: Indicates if the product is active (1) or inactive (0), from the `product.status` field.
+3) **Name**: Product name in three languages, stored in the `product_description` table.
+   - **Name in Latvian (LV)**: Identified by language code 1
+   - **Name in English (ENG)**: Identified by language code 2
+   - **Name in Russian (RU)**: Identified by language code 3
+4) **Description**: Shortened product description in three languages (up to 200 characters with ellipsis), without breaking words in the middle. Found in the `product_description` table.
+   - **Description in Latvian (LV)**: Language code 1
+   - **Description in English (ENG)**: Language code 2
+   - **Description in Russian (RU)**: Language code 3
+5) **Quantity**: Product stock quantity from the `product.quantity`.
+6) **EAN**: Product barcode from the `product.ean`.
+7) **Image URL**: Product image path from `product.image`, prefixed with the base URL 'https://www.example.com/'.
+8) **Date Added**: Date of product addition in the format d-m-Y, from `product.date_added`.
+9) **Price**: Product price from `product.price`.
+10) **Special Price**: Discounted price from `product_special` if today's date (NOW) is less or equal to `date_end`.
 
-##### Repo atrodas uzģenerētais no sql sample datiem xml fails `products.xml` 
-##### Skripts darbojas ar MySQL versiju 5.7.39 un PHP 7.4
+### Pricing Details:
+- All prices are displayed with a 21% VAT included, rounded to two decimal places. Decimals are shown even if they are zero.
 
+## Repository Contents:
+- The generated XML file `products.xml` from sample SQL data.
+- The script is compatible with MySQL version 5.7.39 and PHP 7.4.
 
----
+## Running the Script:
+Requirements: MySQL 5.7.39 and PHP 7.4
+1) Clone or download this Git repository.
+2) Create a MySQL database and import the `webdev_test.sql` file into your MySQL database.
+3) Open the project with a code editor (e.g., Visual Studio Code).
+4) In the `index.php` file, fill in the following fields:
+   - `$database_hostname`: Your MySQL hostname or IP address (e.g., localhost).
+   - `$database_username`: Your MySQL username (e.g., root).
+   - `$database_password`: Your MySQL password, leave empty if not applicable.
+   - `$database_name`: Your MySQL database name (e.g., webdev).
+5) Run the script in the terminal from the directory containing `index.php` using the command:
 
-#### Lai palaistu so skriptu ir nepiecieams MySQL 5.7.39 un PHP 7.4
-#### 1) Klonēt vai lejuplādēt šo git direktoriju
-#### 2) Nepiecieams izveidot MySQL datubāzi un importēt webdev_test.sql failu savā MySQL datubazē
-#### 3) Atvērt ar koda editoru, example: vscode
-#### 3) Aizpildīt index.php faila augšdaļā atrodošos laukus:
-##### a) `$database_hostname` = ievadiet savu MySQL hostname, ip addresi, example: localhost
-##### b) `$database_username` = ievadiet savu MySQL username, lietotaja vārdu example: root
-##### c) `$database_password` = ievadiet savu MySQL password, lietotāja paroli vai atstājat tukšu ja tādas nav
-##### d) `$database_name` = ievadiet savu MySQL database name, datubāzes vārdu, example: webdev
-#### 4) palaist script termināli no direktorijas kurā atrodas index.php ar komandu:
-
-````
+```bash
 php index.php
-
-````
-
-#### Veiksmīgas izpildes gadījumā terminalī tiks izvadīts `XML file generated successfully`, kas atradīsies faila products.xml.
