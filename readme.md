@@ -22,7 +22,7 @@ A PHP script has been developed to connect to a database, retrieve all products,
    - **Description in Russian (RU)**: Language code 3
 5) **Quantity**: Product stock quantity from the `product.quantity`.
 6) **EAN**: Product barcode from the `product.ean`.
-7) **Image URL**: Product image path from `product.image`, prefixed with the base URL 'https://www.example.com/'.
+7) **Image URL**: Product image path from `product.image`, prefixed with the base URL.
 8) **Date Added**: Date of product addition in the format d-m-Y, from `product.date_added`.
 9) **Price**: Product price from `product.price`.
 10) **Special Price**: Discounted price from `product_special` if today's date (NOW) is less or equal to `date_end`.
